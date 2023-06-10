@@ -28,7 +28,7 @@ const products = [
         brand: 'Lacoste',
         category: 'Shirts',
         price: 220,
-        countInStock: 0,
+        countInStock: 5,
         rating: 4.8,
         numReviews: 17,
     },
