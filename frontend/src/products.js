@@ -1,18 +1,18 @@
 const products = [
     {
-        _id: 1,
-        name: 'Nike Slim Shirt',
+        _id: '1',
+        name: 'Nike Slim Shirt Drifit High Quality Discount',
         image: '/images/imageplaceholder.png',
         description: 'high quality product',
         brand: 'Nike',
         category: 'Shirts',
         price: 120,
-        countInStock: 10,
+        countInStock: 0,
         rating: 4.5,
         numReviews: 10,
     },
     {
-        _id: 2,
+        _id: '2',
         name: 'Adidas Fit Shirt',
         image: '/images/imageplaceholder.png',
         description: 'high quality product',
@@ -24,7 +24,7 @@ const products = [
         numReviews: 10,
     },
     {
-        _id: 3,
+        _id: '3',
         name: 'Lacoste Free Shirt',
         image: '/images/imageplaceholder.png',
         description: 'high quality product',
