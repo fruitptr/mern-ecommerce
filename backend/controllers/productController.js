@@ -5,16 +5,45 @@ import Product from '../models/productModel.js';
 // @route   GET /api/products
 // @access  Public
 const getProducts = asyncHandler(async (req, res) => {
-    const pageSize = 2;
+    const pageSize = 8;
     const page = Number(req.query.pageNumber) || 1;
 
-    const keyword = req.query.keyword ? {name: {$regex: req.query.keyword, $options: 'i'}} : {};
+    const keyword = req.query.keyword ? {name: {$regex: req.query.keyword, $options: 'i'}} : 0;
 
-    const count = await Product.countDocuments({...keyword});
-    const products = await Product.find({...keyword})
-    .limit (pageSize)
-    .skip(pageSize * (page - 1));
-    res.json({products, page, pages: Math.ceil(count / pageSize)});
+    const category = req.query.category ? {category: req.query.category} : 0;
+
+    console.log("-------------------");
+    console.log(keyword);
+    console.log(category);
+    console.log("-------------------");
+
+    if (keyword != 0)
+    {
+        console.log("keyword");
+        const count = await Product.countDocuments({...keyword});
+        const products = await Product.find({...keyword})
+        .limit (pageSize)
+        .skip(pageSize * (page - 1));
+        res.json({products, page, pages: Math.ceil(count / pageSize)});
+        
+    }
+    else if (category != 0)
+    {
+        console.log("category");
+        const count = await Product.countDocuments({...category});
+        const products = await Product.find({...category})
+        .limit (pageSize)
+        .skip(pageSize * (page - 1));
+        res.json({products, page, pages: Math.ceil(count / pageSize)});
+        
+    }
+    else {
+        const count = await Product.countDocuments();
+        const products = await Product.find()
+        .limit (pageSize)
+        .skip(pageSize * (page - 1));
+        res.json({products, page, pages: Math.ceil(count / pageSize)});
+    }
 });
 
 // @desc    Fetch a products

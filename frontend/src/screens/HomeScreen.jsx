@@ -10,8 +10,8 @@ import { useGetProductsQuery } from '../slices/productsApiSlice';
 
 
 const HomeScreen = () => {
-  const {pageNumber, keyword} = useParams();
-  const { data, isLoading, error} = useGetProductsQuery({keyword, pageNumber});
+  const {pageNumber, keyword, category} = useParams();
+  const { data, isLoading, error} = useGetProductsQuery({category, keyword, pageNumber});
   return (
     <>
     {!keyword ? <ProductCarousel />  :( <Link to='/' className='btn btn-light mb-4'>Go Back</Link>)}
